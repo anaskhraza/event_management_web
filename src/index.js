@@ -1,17 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import { render } from "react-dom";
+import { AppContainer } from "react-hot-loader";
+import Root from "./containers/Root";
+import { configureStore, history } from "./store/configureStore";
+import "./app.global.css";
+import { hot, setConfig } from 'react-hot-loader'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+setConfig({
+  showReactDomPatchNotification: false
+})
+
+const store = configureStore();
+
+render(
+  <>
+    <Root store={store} history={history} />
+  </>,
+  document.getElementById("root")
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+if (module.hot) {
+  module.hot.accept("./containers/Root", () => {
+    // eslint-disable-next-line global-require
+    const NextRoot = require("./containers/Root").default;
+    render(
+      <>
+        <NextRoot store={store} history={history} />
+      </>,
+      document.getElementById("root")
+    );
+  });
+}

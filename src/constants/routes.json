@@ -1,0 +1,13 @@
+{
+  "HOME": "/",
+  "COUNTER": "/counter",
+  "EVENTPAGE": "/eventpage",
+  "EVENTITEMPAGE": "/eventitempage",
+  "ORDERCUSTOMERPAGE": "/ordercustomerpage",
+  "ORDERDRAFTPAGE": "/orderdraftpage",
+  "TARGETLISTPAGE": "/targets",
+  "ORDERLISTPAGE": "/orders",
+  "DRAFTLISTPAGE": "/drafts",
+  "ITEMLISTPAGE": "/items",
+  "CUSTOMERLISTPAGE": "/customers"
+}
